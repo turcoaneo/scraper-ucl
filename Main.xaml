@@ -128,6 +128,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>NPOI.Core</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="754,2874.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -155,6 +156,11 @@
               <Variable x:TypeArguments="x:String" Name="ParsedAwayScore" />
               <Variable x:TypeArguments="x:String" Default="UCL_ParsedMatches.xlsx" Name="ExcelOutputPath_Local" />
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="MatchElementsUI" />
+              <Variable x:TypeArguments="x:String" Name="exportPlanJson" />
+              <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="exportPlan" />
+              <Variable x:TypeArguments="x:String" Name="partitionOutputFolder" />
+              <Variable x:TypeArguments="x:Int32" Default="0" Name="partitionStartIndex" />
+              <Variable x:TypeArguments="x:Int32" Name="partitionRecordCount" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -225,6 +231,61 @@
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:LogMessage DisplayName="Log Excel Output Path" sap:VirtualizedContainerService.HintSize="452,167" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[$&quot;Saved parsed matches to {ExcelOutputPath_Local}&quot;]" />
+            <ui:ReadTextFile DisplayName="Read Excel Export Plan" FileName="[System.IO.Path.Combine(System.Environment.CurrentDirectory, &quot;ExcelExportPlan.json&quot;)]" Content="[exportPlanJson]" />
+            <Assign DisplayName="Deserialize Excel Export Plan">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">[exportPlan]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of System.Collections.Generic.Dictionary(Of String, System.Int32))(exportPlanJson)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Set Partition Output Folder">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[partitionOutputFolder]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(System.Environment.CurrentDirectory, &quot;saved files&quot;)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:CreateDirectory DisplayName="Create Saved Files Folder" Path="[partitionOutputFolder]" />
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Save Excel Partitions" Values="[exportPlan.Keys]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="partitionFileName" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Save Partition">
+                    <Assign DisplayName="Set Partition Record Count">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[partitionRecordCount]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[exportPlan(partitionFileName)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Save Match Partition" UnSafe="False" WorkflowFileName="SaveMatchPartitionToExcel.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="sd2:DataTable" x:Key="in_DataTable">[dt_ParsedMatches]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_WorkbookPath">[System.IO.Path.Combine(partitionOutputFolder, partitionFileName)]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">["Matches"]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_StartIndex">[partitionStartIndex]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_RecordCount">[partitionRecordCount]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <Assign DisplayName="Advance Partition Start Index">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[partitionStartIndex]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[partitionStartIndex + partitionRecordCount]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+            <ui:LogMessage DisplayName="Log Partition Output Folder" Level="Info" Message="[$&quot;Saved match partitions to {partitionOutputFolder}&quot;]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
