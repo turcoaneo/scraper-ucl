@@ -1,0 +1,43 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Tests_SaveMatchesToExcel_TestExcelExportPlan" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uta="clr-namespace:UiPath.Testing.Activities;assembly=UiPath.Testing.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String"><x:String>System</x:String><x:String>System.Activities</x:String><x:String>System.Collections.Generic</x:String><x:String>System.IO</x:String><x:String>System.Linq</x:String><x:String>UiPath.Core</x:String><x:String>UiPath.Core.Activities</x:String></sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference"><AssemblyReference>System.Activities</AssemblyReference><AssemblyReference>System.Private.CoreLib</AssemblyReference><AssemblyReference>UiPath.System.Activities</AssemblyReference><AssemblyReference>UiPath.Testing.Activities</AssemblyReference><AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference><AssemblyReference>System.Linq</AssemblyReference><AssemblyReference>System.ObjectModel</AssemblyReference><AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference><AssemblyReference>Newtonsoft.Json</AssemblyReference></sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Test Excel Export Plan" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="planJson" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="exportPlan" />
+      <Variable x:TypeArguments="x:Int32" Name="totalRecords" />
+    </Sequence.Variables>
+    <Sequence DisplayName="Export Plan Given" sap2010:WorkflowViewState.IdRef="Sequence_2" />
+    <Sequence DisplayName="Export Plan When" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <ui:ReadTextFile DisplayName="Read Excel Export Plan" FileName="[System.IO.Path.Combine(System.Environment.CurrentDirectory, &quot;ExcelExportPlan.json&quot;)]" Content="[planJson]" />
+      <Assign DisplayName="Deserialize Export Plan">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">[exportPlan]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">[Newtonsoft.Json.JsonConvert.DeserializeObject(Of System.Collections.Generic.Dictionary(Of String, System.Int32))(planJson)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Calculate Total Records">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Int32">[totalRecords]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Int32">[exportPlan.Values.Sum]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <Sequence DisplayName="Export Plan Then" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <uta:VerifyExpressionWithOperator DisplayName="Verify final filename" Operator="Equality" ContinueOnFailure="False" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False"><uta:VerifyExpressionWithOperator.FirstExpression><InArgument x:TypeArguments="x:Int32">[exportPlan("final.xlsx")]</InArgument></uta:VerifyExpressionWithOperator.FirstExpression><uta:VerifyExpressionWithOperator.SecondExpression><InArgument x:TypeArguments="x:Int32">[1]</InArgument></uta:VerifyExpressionWithOperator.SecondExpression></uta:VerifyExpressionWithOperator>
+      <uta:VerifyExpressionWithOperator DisplayName="Verify quarter finals slice" Operator="Equality" ContinueOnFailure="False" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False"><uta:VerifyExpressionWithOperator.FirstExpression><InArgument x:TypeArguments="x:Int32">[exportPlan("quarter_finals.xlsx")]</InArgument></uta:VerifyExpressionWithOperator.FirstExpression><uta:VerifyExpressionWithOperator.SecondExpression><InArgument x:TypeArguments="x:Int32">[8]</InArgument></uta:VerifyExpressionWithOperator.SecondExpression></uta:VerifyExpressionWithOperator>
+      <uta:VerifyExpressionWithOperator DisplayName="Verify round of 16 spelling" Operator="Equality" ContinueOnFailure="False" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False"><uta:VerifyExpressionWithOperator.FirstExpression><InArgument x:TypeArguments="x:Int32">[exportPlan("round_of_16.xlsx")]</InArgument></uta:VerifyExpressionWithOperator.FirstExpression><uta:VerifyExpressionWithOperator.SecondExpression><InArgument x:TypeArguments="x:Int32">[16]</InArgument></uta:VerifyExpressionWithOperator.SecondExpression></uta:VerifyExpressionWithOperator>
+      <uta:VerifyExpressionWithOperator DisplayName="Verify playoffs slice" Operator="Equality" ContinueOnFailure="False" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False"><uta:VerifyExpressionWithOperator.FirstExpression><InArgument x:TypeArguments="x:Int32">[exportPlan("playoffs.xlsx")]</InArgument></uta:VerifyExpressionWithOperator.FirstExpression><uta:VerifyExpressionWithOperator.SecondExpression><InArgument x:TypeArguments="x:Int32">[16]</InArgument></uta:VerifyExpressionWithOperator.SecondExpression></uta:VerifyExpressionWithOperator>
+      <uta:VerifyExpressionWithOperator DisplayName="Verify matchday slice" Operator="Equality" ContinueOnFailure="False" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False"><uta:VerifyExpressionWithOperator.FirstExpression><InArgument x:TypeArguments="x:Int32">[exportPlan("matchday_1.xlsx")]</InArgument></uta:VerifyExpressionWithOperator.FirstExpression><uta:VerifyExpressionWithOperator.SecondExpression><InArgument x:TypeArguments="x:Int32">[18]</InArgument></uta:VerifyExpressionWithOperator.SecondExpression></uta:VerifyExpressionWithOperator>
+      <uta:VerifyExpressionWithOperator DisplayName="Verify total records" Operator="Equality" ContinueOnFailure="False" TakeScreenshotInCaseOfFailingAssertion="False" TakeScreenshotInCaseOfSucceedingAssertion="False"><uta:VerifyExpressionWithOperator.FirstExpression><InArgument x:TypeArguments="x:Int32">[totalRecords]</InArgument></uta:VerifyExpressionWithOperator.FirstExpression><uta:VerifyExpressionWithOperator.SecondExpression><InArgument x:TypeArguments="x:Int32">[189]</InArgument></uta:VerifyExpressionWithOperator.SecondExpression></uta:VerifyExpressionWithOperator>
+    </Sequence>
+  </Sequence>
+</Activity>
