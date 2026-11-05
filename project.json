@@ -127,6 +127,20 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchesToExcel_DataDriven.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "6f9a5b2c-3d84-4e71-8a06-1c2e7f9b4d53",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestExcelExportPlan.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7a2c9e41-5d63-4f80-b127-6e9a3c2d8f54",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchPartitionToExcel.xaml"
       }
     ],
     "saveToCloud": false
