@@ -1,0 +1,73 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SaveMatchPartitionToExcel" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_DataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_WorkbookPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_StartIndex" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RecordCount" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Save Match Partition To Excel" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Default="[in_DataTable.Clone()]" Name="partitionDataTable" />
+      <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
+    </Sequence.Variables>
+    <If Condition="[in_DataTable Is Nothing OrElse in_StartIndex &lt; 0 OrElse in_RecordCount &lt; 0 OrElse in_StartIndex + in_RecordCount &gt; in_DataTable.Rows.Count]" DisplayName="Validate Partition Range" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Throw DisplayName="Invalid Partition Range" Exception="[New ArgumentOutOfRangeException(&quot;Partition range is outside the source DataTable.&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+      </If.Then>
+    </If>
+    <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="Copy Partition Rows" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[System.Linq.Enumerable.Range(in_StartIndex, in_RecordCount)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Int32">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="currentRowIndex" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Copy Row" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Assign DisplayName="Set Row Index" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To><OutArgument x:TypeArguments="x:Int32">[rowIndex]</OutArgument></Assign.To>
+              <Assign.Value><InArgument x:TypeArguments="x:Int32">[currentRowIndex]</InArgument></Assign.Value>
+            </Assign>
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[in_DataTable.Rows(rowIndex).ItemArray]" DataTable="[partitionDataTable]" DisplayName="Add Partition Row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Save Partition To Excel" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SaveMatchesToExcel.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[partitionDataTable]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_WorkbookPath">[in_WorkbookPath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">[in_SheetName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>

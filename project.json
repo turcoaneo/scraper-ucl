@@ -134,6 +134,13 @@
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
         "fileName": "Tests\\SaveMatchesToExcel\\TestExcelExportPlan.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7a2c9e41-5d63-4f80-b127-6e9a3c2d8f54",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchPartitionToExcel.xaml"
       }
     ],
     "saveToCloud": false
