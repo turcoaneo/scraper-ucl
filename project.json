@@ -1,0 +1,148 @@
+{
+  "name": "Scraping UCL",
+  "projectId": "65d07ee0-23b2-4727-9e17-235b0f20f54a",
+  "description": "Scraping UCL group results for 2024 and 2025.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "3.6.1",
+    "UiPath.System.Activities": "[26.10.0]",
+    "UiPath.Testing.Activities": "25.10.3",
+    "UiPath.UIAutomation.Activities": "[26.10.5]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.1",
+  "studioVersion": "26.0.204.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "NewtonsoftJson",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "1441589e-c599-4819-a07d-101bd6baf566",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_JuventusPSV.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "a78e3353-397f-42af-8a5f-25db8cf77d95",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_YoungBoysAstonVilla.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "90c2d165-1ee6-498d-891f-364b7f01f1a7",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_ClubBruggeDortmund.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "8e1a5915-bec9-4145-9adb-ae5feb9d124b",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_MalformedInput.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "05d15e32-f6b2-4928-b064-f7c96fcd7f03",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_EmptyInput.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "3c79e22f-cb25-47fd-af61-5dbf294eb48e",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_MissingScore.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "a7376c65-6309-4a3e-b089-b498b8058dad",
+        "dataVariationFilePath": ".variations\\TestParseMatch_ValidExamples.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_ValidExamples.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "d4f4e72f-7fdc-4e36-8c1b-1d04c2b2f2a4",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\ParseMatch\\TestParseMatch_CaseSensitiveWinMarker.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "80d427c3-0b6d-48c6-8ded-9e8f81c38c57",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchesToExcel_Populated.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "12f31106-9d29-4225-9b13-029caceee06d",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchesToExcel_Empty.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "ab315cea-e885-4c8e-82dc-d1d13ba8ca10",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchesToExcel_InvalidPath.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "433a951c-4aec-4f52-9c83-978e7c482028",
+        "dataVariationFilePath": ".variations\\TestSaveMatchesToExcel_DataDriven_Data.json",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\SaveMatchesToExcel\\TestSaveMatchesToExcel_DataDriven.xaml"
+      }
+    ],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "5446b115-4c49-483a-9536-f8b26677907c",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows",
+  "dotNetVersion": "net10.0"
+}

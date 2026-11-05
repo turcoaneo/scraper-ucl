@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Brest Sturm Graz 21",
+  "Type": "Element",
+  "Id": "FhVqYOPP_E-U6_ibfXM_pg",
+  "Reference": "-UofC5DixUim2a9t93LLZA/FhVqYOPP_E-U6_ibfXM_pg",
+  "ParentRef": "-UofC5DixUim2a9t93LLZA/J-5tItCjhUan5j_BwTpruw",
+  "Created": "2026-11-04T15:12:31.4829687Z",
+  "Updated": "2026-11-04T15:12:31.4829687Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

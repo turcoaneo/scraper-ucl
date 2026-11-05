@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="VR-toVHq7E-c2UgV8fIsAQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="uefa.com/uefachampionsleague/history/seasons/2025/matches" DesignTimeRectangle="1454, 825, 1361, 288" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl idx='173' tag='PK-MATCH-UNIT' /&gt;&lt;webctrl shadowhostid='' tag='DIV' visibleinnertext='Monaco&amp;#xA;Barcelona&amp;#xA;2&amp;#xA;1' /&gt;" Guid="5a8fd416-1a39-4c94-835f-53fe33add624" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Season 2024/25 Matches | UEFA Champions League 2024/25 | UEFA.com' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="8e6f47b5e6befc867f94fb0a665cf050.jpg" xmlns="">0k-o6cVJnPUebLfB-DUjGZw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

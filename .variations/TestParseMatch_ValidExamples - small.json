@@ -1,0 +1,23 @@
+[
+  {
+    "in_RawMatchText": "after extra time Inter  Barcelona 43",
+    "in_ExpectedHomeTeam": "Inter",
+    "in_ExpectedAwayTeam": "Barcelona",
+    "in_ExpectedHomeScore": "4",
+    "in_ExpectedAwayScore": "3"
+  },
+  {
+    "in_RawMatchText": "Atleti 1-0 Real Madrid (2)(4)",
+    "in_ExpectedHomeTeam": "Atleti",
+    "in_ExpectedAwayTeam": "Real Madrid",
+    "in_ExpectedHomeScore": "1",
+    "in_ExpectedAwayScore": "0"
+  },
+  {
+    "in_RawMatchText": "Liverpool 0-1 Paris (1)(4)",
+    "in_ExpectedHomeTeam": "Liverpool",
+    "in_ExpectedAwayTeam": "Paris",
+    "in_ExpectedHomeScore": "0",
+    "in_ExpectedAwayScore": "1"
+  }
+]

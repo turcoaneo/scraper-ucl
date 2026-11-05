@@ -1,0 +1,147 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ParseMatchText" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_RawMatchText" Type="InArgument(x:String)" />
+    <x:Property Name="out_HomeTeam" Type="OutArgument(x:String)" />
+    <x:Property Name="out_AwayTeam" Type="OutArgument(x:String)" />
+    <x:Property Name="out_HomeScore" Type="OutArgument(x:String)" />
+    <x:Property Name="out_AwayScore" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Parse Match Text" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="normalizedMatchText" />
+      <Variable x:TypeArguments="str:Match" Name="matchResult" />
+      <Variable x:TypeArguments="str:Match" Name="hyphenatedScoreMatch" />
+      <Variable x:TypeArguments="str:Match" Name="penaltyScoreMatch" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Normalize Match Text" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[normalizedMatchText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(in_RawMatchText Is Nothing, String.Empty, in_RawMatchText.Trim)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Remove Two-Leg Prefix" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[normalizedMatchText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(normalizedMatchText.StartsWith("Agg:", StringComparison.Ordinal), System.Text.RegularExpressions.Regex.Replace(normalizedMatchText, "^Agg:.*?\bwin\s+", String.Empty, System.Text.RegularExpressions.RegexOptions.IgnoreCase).Trim, normalizedMatchText)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Remove Result Prefix" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[normalizedMatchText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(normalizedMatchText.StartsWith("after extra time ", StringComparison.Ordinal), normalizedMatchText.Substring("after extra time ".Length).Trim, If(normalizedMatchText.StartsWith("on penalties ", StringComparison.Ordinal), normalizedMatchText.Substring("on penalties ".Length).Trim, normalizedMatchText))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Remove Penalty Suffix" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[normalizedMatchText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(normalizedMatchText, "\s+\(\d+\)\s*\(\d+\)\s*$", String.Empty)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Find Penalty Score Groups" sap2010:WorkflowViewState.IdRef="Assign_13">
+      <Assign.To>
+        <OutArgument x:TypeArguments="str:Match">[penaltyScoreMatch]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="str:Match">[System.Text.RegularExpressions.Regex.Match(normalizedMatchText, "^\s*(.*?)\s+(.+?)\s+\(\d+\)\s*\(\d+\)\s*([0-9])([0-9])\s*$")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Find Hyphenated Score" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="str:Match">[hyphenatedScoreMatch]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="str:Match">[System.Text.RegularExpressions.Regex.Match(normalizedMatchText, "^\s*(.*?)\s+([0-9])\s*-\s*([0-9])\s+(.*?)\s*$")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Find Match Groups" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="str:Match">[matchResult]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="str:Match">[System.Text.RegularExpressions.Regex.Match(normalizedMatchText, "^\s*(.*?)\s{2,}(.*?)\s+(?:\(\d+\)\s*\(\d+\)\s*)?([0-9])([0-9])\s*$")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[Not (penaltyScoreMatch.Success OrElse matchResult.Success OrElse hyphenatedScoreMatch.Success)]" DisplayName="Validate Match Format" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Invalid Format" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Throw DisplayName="Invalid Match Text" Exception="[New ArgumentException($&quot;Cannot parse match text: '{in_RawMatchText}'&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign DisplayName="Set Home Team" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_HomeTeam]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(penaltyScoreMatch.Success, penaltyScoreMatch.Groups(1).Value.Trim, If(hyphenatedScoreMatch.Success, hyphenatedScoreMatch.Groups(1).Value.Trim, matchResult.Groups(1).Value.Trim))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Set Away Team" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_AwayTeam]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(penaltyScoreMatch.Success, penaltyScoreMatch.Groups(2).Value.Trim, If(hyphenatedScoreMatch.Success, hyphenatedScoreMatch.Groups(4).Value.Trim, matchResult.Groups(2).Value.Trim))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Set Home Score" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_HomeScore]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(penaltyScoreMatch.Success, penaltyScoreMatch.Groups(3).Value, If(hyphenatedScoreMatch.Success, hyphenatedScoreMatch.Groups(2).Value, matchResult.Groups(3).Value))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Set Away Score" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_AwayScore]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(penaltyScoreMatch.Success, penaltyScoreMatch.Groups(4).Value, If(hyphenatedScoreMatch.Success, hyphenatedScoreMatch.Groups(3).Value, matchResult.Groups(4).Value))]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>

@@ -1,0 +1,26 @@
+[
+  {
+    "in_HomeTeam": "Real Madrid",
+    "in_AwayTeam": "Arsenal",
+    "in_HomeScore": "1",
+    "in_AwayScore": "2"
+  },
+  {
+    "in_HomeTeam": "Inter",
+    "in_AwayTeam": "Bayern München",
+    "in_HomeScore": "2",
+    "in_AwayScore": "2"
+  },
+  {
+    "in_HomeTeam": "Juventus",
+    "in_AwayTeam": "PSV",
+    "in_HomeScore": "3",
+    "in_AwayScore": "1"
+  },
+  {
+    "in_HomeTeam": "Club Brugge",
+    "in_AwayTeam": "B. Dortmund",
+    "in_HomeScore": "0",
+    "in_AwayScore": "3"
+  }
+]

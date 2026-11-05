@@ -1,0 +1,12 @@
+{
+  "dataVariationFileInfo": [
+    {
+      "filePath": ".variations\\TestSaveMatchesToExcel_DataDriven_Data.json",
+      "dataVariationType": "File"
+    },
+    {
+      "filePath": ".variations\\TestParseMatch_ValidExamples.json",
+      "dataVariationType": "File"
+    }
+  ]
+}

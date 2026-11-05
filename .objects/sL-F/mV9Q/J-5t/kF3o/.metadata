@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Find All Matches",
+  "Type": "Element",
+  "Id": "kF3oxMJ2LUm3fTwQtGOdkw",
+  "Reference": "-UofC5DixUim2a9t93LLZA/kF3oxMJ2LUm3fTwQtGOdkw",
+  "ParentRef": "-UofC5DixUim2a9t93LLZA/J-5tItCjhUan5j_BwTpruw",
+  "Created": "2026-11-05T12:27:08.7429078Z",
+  "Updated": "2026-11-05T12:27:08.7429078Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

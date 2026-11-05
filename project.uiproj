@@ -1,0 +1,6 @@
+{
+  "Name": "Scraping UCL",
+  "ProjectType": "Process",
+  "Description": "Scraping UCL group results for 2024 and 2025.",
+  "MainFile": "Main.xaml"
+}

@@ -1,0 +1,243 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:sd2="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Activities.System.Text</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.AsyncEnumerable</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
+      <AssemblyReference>System.Private.Windows.GdiPlus</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Private.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="754,2874.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="GetTextMatchInfo" />
+      <Variable x:TypeArguments="x:String" Default="[System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), &quot;UCL_ParsedMatches.xlsx&quot;)]" Name="ExcelOutputPath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome Season 202425 Matches  UEFA Champions" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="488,2851.5" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="155f19bd-0900-4572-89b7-d5938138a044" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,2656.5" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd2:DataTable" Default="[New System.Data.DataTable()]" Name="dt_ParsedMatches" />
+              <Variable x:TypeArguments="x:String" Name="ParsedHomeTeam" />
+              <Variable x:TypeArguments="x:String" Name="ParsedAwayTeam" />
+              <Variable x:TypeArguments="x:String" Name="ParsedHomeScore" />
+              <Variable x:TypeArguments="x:String" Name="ParsedAwayScore" />
+              <Variable x:TypeArguments="x:String" Default="UCL_ParsedMatches.xlsx" Name="ExcelOutputPath_Local" />
+              <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="MatchElementsUI" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="HomeTeam" DataTable="[dt_ParsedMatches]" DisplayName="Add HomeTeam Column" sap:VirtualizedContainerService.HintSize="452,222.5" sap2010:WorkflowViewState.IdRef="AddDataColumn_1" />
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="AwayTeam" DataTable="[dt_ParsedMatches]" DisplayName="Add AwayTeam Column" sap:VirtualizedContainerService.HintSize="452,222.5" sap2010:WorkflowViewState.IdRef="AddDataColumn_2" />
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="HomeScore" DataTable="[dt_ParsedMatches]" DisplayName="Add HomeScore Column" sap:VirtualizedContainerService.HintSize="452,222.5" sap2010:WorkflowViewState.IdRef="AddDataColumn_3" />
+            <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="AwayScore" DataTable="[dt_ParsedMatches]" DisplayName="Add AwayScore Column" sap:VirtualizedContainerService.HintSize="452,222.5" sap2010:WorkflowViewState.IdRef="AddDataColumn_4" />
+            <uix:NFindElements Children="[MatchElementsUI]" DisplayName="Find All Matches" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="452,248" sap2010:WorkflowViewState.IdRef="NFindElements_1" Mode="[UiPath.UIAutomationNext.Enums.NFindMode.FindDescendants]" ScopeIdentifier="155f19bd-0900-4572-89b7-d5938138a044" Version="V5">
+              <uix:NFindElements.FilterTarget>
+                <uix:TargetAnchorable DesignTimeRectangle="0, 0, 0, 0" FuzzySelectorArgument="&lt;webctrl shadowhostid='' part='container' class='pk-match-unit*' tag='DIV' /&gt;" Guid="9e7383d5-d0fe-4df0-bb34-8b4d5f1f5902" SearchSteps="FuzzySelector" Version="V6" />
+              </uix:NFindElements.FilterTarget>
+            </uix:NFindElements>
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Match" sap:VirtualizedContainerService.HintSize="452,938.5" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[MatchElementsUI]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="ui:UiElement">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:UiElement" Name="CurrentElement" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,807" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGetText DisplayName="Get Text From Match" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="416,123.5" sap2010:WorkflowViewState.IdRef="NGetText_5" InUiElement="[CurrentElement]" ScopeIdentifier="155f19bd-0900-4572-89b7-d5938138a044" TextString="[GetTextMatchInfo]" Version="V5" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Parse Match Text" sap:VirtualizedContainerService.HintSize="416,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ParseMatchText.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_RawMatchText">[GetTextMatchInfo]</InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_HomeTeam">[ParsedHomeTeam]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_AwayTeam">[ParsedAwayTeam]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_HomeScore">[ParsedHomeScore]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_AwayScore">[ParsedAwayScore]</OutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored activities" sap:VirtualizedContainerService.HintSize="650,227" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Raw Match Text" sap:VirtualizedContainerService.HintSize="616,167" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[GetTextMatchInfo]" />
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:LogMessage DisplayName="Log Parsed Match" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[$&quot;Parsed: {ParsedHomeTeam} {ParsedHomeScore}-{ParsedAwayScore} {ParsedAwayTeam}&quot;]" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[New Object() {ParsedHomeTeam, ParsedAwayTeam, ParsedHomeScore, ParsedAwayScore}]" DataTable="[dt_ParsedMatches]" DisplayName="Add Parsed Match Row" sap:VirtualizedContainerService.HintSize="416,213.5" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+            <ui:LogMessage DisplayName="Log Match Count" sap:VirtualizedContainerService.HintSize="452,176" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[$&quot;Extracted {dt_ParsedMatches.Rows.Count} matches&quot;]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Save Parsed Matches To Excel" sap:VirtualizedContainerService.HintSize="452,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="SaveMatchesToExcel.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="sd2:DataTable" x:Key="in_DataTable">[dt_ParsedMatches]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_WorkbookPath">[ExcelOutputPath_Local]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SheetName">["Matches"]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:LogMessage DisplayName="Log Excel Output Path" sap:VirtualizedContainerService.HintSize="452,167" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[$&quot;Saved parsed matches to {ExcelOutputPath_Local}&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+        </ActivityFunc>
+      </uix:NApplicationCard.OCREngine>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-13, -13, 2906, 1730" BrowserType="Chrome" ContentHash="Egh_1jIzUkqGFFgOASyOEg" IconBase64="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" InformativeScreenshot="7ed493540aa8ef1d3c824b7012bd6d8c.jpg" Reference="-UofC5DixUim2a9t93LLZA/J-5tItCjhUan5j_BwTpruw" Selector="&lt;html app='chrome.exe' title='Season 2024/25 Matches | UEFA Champions League 2024/25 | UEFA.com' /&gt;" Url="https://www.uefa.com/uefachampionsleague/history/seasons/2025/matches/" Version="V3" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

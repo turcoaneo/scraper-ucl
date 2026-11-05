@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome Season 202425 Matches  UEFA Champions League 202425  UEFA.com",
+  "Type": "App",
+  "Id": "sL-FyxoJC0KjwCFUFN0SlQ",
+  "Reference": "-UofC5DixUim2a9t93LLZA/sL-FyxoJC0KjwCFUFN0SlQ",
+  "Created": "2026-11-04T14:55:47.4746959Z",
+  "Updated": "2026-11-04T14:55:47.4746959Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.10.5.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=26.9.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
